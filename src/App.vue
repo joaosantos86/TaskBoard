@@ -84,7 +84,7 @@ watch(tasks, (newTasks) => {
         </div>
         <div> <!--Task show-->
           <ul>
-            <li v-for="task in filterTasks" :key="task.id">
+            <li :class="{bg: task.status === 'done'}" v-for="task in filterTasks" :key="task.id">
               <input class="checkbox" :checked="task.status === 'done'" @click="checkbox(task)" type="checkbox">
               <span :class="{ done: task.status === 'done' }">{{ task.desc }}</span>
               <div class="icons">
@@ -189,8 +189,12 @@ watch(tasks, (newTasks) => {
     box-shadow: 2px 2px 3px #0000002d;
     text-align: left;
     max-width: 100%;
+    transition: 0.2s ease;
   }
+  .bg {
+    border-left: solid 5px rgba(51, 255, 0, 0.445);
 
+  }
   .list {
     font-size: 0.8rem;
     display: flex;
